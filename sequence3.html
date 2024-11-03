@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CausAVFuzzer</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom CSS for the '3 Col Portfolio' Template -->
+    <link href="css/3-col-portfolio.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://causavfuzzer2024.github.io">CausAVFuzzer</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="chains.html">Detected Chains</a></li>
+            <li><a href="index.html">Video Demos</a></li>
+            <li><a href="sourcecode.html">Source Code</a></li>
+          </ul>
+          <!--<ul class="nav navbar-nav navbar-right">
+						<li>
+							 <a href="TODO">TODO</a>
+						</li>
+					</ul>-->
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-12">
+          <h1 class="page-header">Causal Event Sequence #3 <small>demo</small></h1>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 portfolio-item">
+          <h3>Accident Recording</h3>
+          <video id="seq1" width="560" height="267" controls muted>
+            <source src="video/TODO" type="video/mp4">
+          </video>
+          <script>
+            var vid1r = document.getElementById("seq1");
+            function getCurTime1_1() { 
+              alert(vid1r.currentTime);
+            } 
+            function setCurTime1_1(time) {              
+              vid1r.currentTime=time;
+            } 
+          </script> 
+          <br>
+          <h3>The activated components</h3>
+          <img src="fig/CausalEventSequence.jpg" class="img-thumbnail" />
+        </div>
+
+        <div class="col-md-6 portfolio-item">
+          <h3>Causality Analysis Result</h3>
+          <table class="table table-hover">
+            <thead>
+              <tr><th>Time</th><th>Accident Causal Events</th><th>Details</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><a href="#" onclick="setCurTime1_1(0)">0s</a></td>
+                <td><b>No Planning Faults Discovered:</b><br>EV keeps safe distance from NPCs</td>
+                <td>--</td>
+              </tr>
+              <tr><td><a href="#" onclick="setCurTime1_1(2.6)">2.6s</a></td>
+                <td><b>In Planning Module:</b><br>EV reuses the previous planning, which sometimes could be improper </td>
+                <td>AV's planning speed is too fast or too slow</td>
+              </tr>
+              <tr><td><a href="#" onclick="setCurTime1_1(2.9)">2.9s</a></td>
+                <td><b>No Planning Faults Discovered:</b><br>Collision-free long-term speed planning <br><b>In Control Module:</b><br>EV is skidding sometimes </td>
+                <td>AV's Planning speed is too fast or too slow<br><b>For NPC 3: </b><br>Wrong trajectory prediction <br>Improper "follow" decision (too close)</td>
+              </tr>
+              <tr><td><a href="#" onclick="setCurTime1_1(5.7)">5.7s</a></td>
+                <td><b>In Planning Module:</b><br>Wrong motion planning, although identifying drivable area correctly <br><b>In Control Module:</b><br>EV is skidding sometimes </td>
+                <td>AV's Planning speed is too fast or too slow<br><b>For NPC 3: </b><br>Wrong priority/trajectory prediction</td>
+              </tr>
+              <tr><td><a href="#" onclick="setCurTime1_1(6.2)">6.2s</a></td>
+                <td><b>Accident!</b></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+      <hr>
+
+    <div class="row text-center">
+        
+      <div class="col-lg-12">
+        <ul class="pagination">
+          <li><a href="sequence2.html">&laquo;</a></li>
+          <li><a href="index.html">1</a></li>
+          <li><a href="sequence2.html">2</a></li>
+          <li class="active"><a href="sequence3.html">3</a></li>
+          <li><a href="sequence4.html">4</a></li>
+          <li><a href="sequence5.html">5</a></li>
+          <li><a href="sequence6.html">6</a></li>
+          <li><a href="sequence4.html">&raquo;</a></li>
+        </ul>        
+      </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script type="text/javascript">
+      var dt = new Date();
+      document.getElementById('getCurrentDate').innerHTML = dt.getFullYear();
+    </script>
+  </body>
+
+</html>
