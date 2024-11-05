@@ -50,16 +50,16 @@
       <div class="row">
 
         <div class="col-lg-12">
-          <h1 class="page-header">Causal Event Sequence #4 <small>demo</small></h1>
+          <h1 class="page-header">Video Demo #4 <small>an instance of causal sequence #2</small></h1>
         </div>
 
       </div>
 
       <div class="row">
-        <div class="col-md-6 portfolio-item">
+        <div class="col-md-8 portfolio-item">
           <h3>Accident Recording</h3>
-          <video id="seq1" width="560" height="267" controls muted>
-            <source src="video/TODO" type="video/mp4">
+          <video id="seq1" width="747" height="356" controls muted>
+            <source src="video/video2.webm" type="video/webm">
           </video>
           <script>
             var vid1r = document.getElementById("seq1");
@@ -71,36 +71,27 @@
             } 
           </script> 
           <br>
-          <h3>The activated components</h3>
-          <img src="fig/CausalEventSequence.jpg" class="img-thumbnail" />
+          <h3>The activated components throughout the test case</h3>
+          <img src="fig/P4.jpg" class="img-thumbnail" />
         </div>
 
-        <div class="col-md-6 portfolio-item">
-          <h3>Causality Analysis Result</h3>
+        <div class="col-md-4 portfolio-item">
+          <h3>Analysis Result</h3>
           <table class="table table-hover">
             <thead>
-              <tr><th>Time</th><th>Accident Causal Events</th><th>Details</th></tr>
+              <tr><th>Time</th<th>Details</th></tr>
             </thead>
             <tbody>
               <tr><td><a href="#" onclick="setCurTime1_1(0)">0s</a></td>
-                <td><b>No Planning Faults Discovered:</b><br>EV keeps safe distance from NPCs</td>
-                <td>--</td>
+                <td>The AV assigns an "INTERACTION" and "CAUTION" priority prediction to the distant NPC on the left but <b>does not make a similar prediction for the closer NPC on the right</b>. 
+                  Additionally, the AV’s <b>trajectory prediction for the NPC on the right consistently has a significant error</b>. 
+                  While the AV <b>makes a reasonable yielding decision, it instead <b>slightly accelerates</b>.</td>
               </tr>
-              <tr><td><a href="#" onclick="setCurTime1_1(2.6)">2.6s</a></td>
-                <td><b>In Planning Module:</b><br>EV reuses the previous planning, which sometimes could be improper </td>
-                <td>AV's planning speed is too fast or too slow</td>
+              <tr><td><a href="#" onclick="setCurTime1_1(2)">2s</a></td>
+                <td>The AV does not stop in time to avoid the NPC. </td>
               </tr>
-              <tr><td><a href="#" onclick="setCurTime1_1(2.9)">2.9s</a></td>
-                <td><b>No Planning Faults Discovered:</b><br>Collision-free long-term speed planning <br><b>In Control Module:</b><br>EV is skidding sometimes </td>
-                <td>AV's Planning speed is too fast or too slow<br><b>For NPC 3: </b><br>Wrong trajectory prediction <br>Improper "follow" decision (too close)</td>
-              </tr>
-              <tr><td><a href="#" onclick="setCurTime1_1(5.7)">5.7s</a></td>
-                <td><b>In Planning Module:</b><br>Wrong motion planning, although identifying drivable area correctly <br><b>In Control Module:</b><br>EV is skidding sometimes </td>
-                <td>AV's Planning speed is too fast or too slow<br><b>For NPC 3: </b><br>Wrong priority/trajectory prediction</td>
-              </tr>
-              <tr><td><a href="#" onclick="setCurTime1_1(6.2)">6.2s</a></td>
+              <tr><td><a href="#" onclick="setCurTime1_1(4)">4s</a></td>
                 <td><b>Accident!</b></td>
-                <td></td>
               </tr>
             </tbody>
           </table>
@@ -119,9 +110,7 @@
           <li><a href="sequence2.html">2</a></li>
           <li><a href="sequence3.html">3</a></li>
           <li class="active"><a href="sequence4.html">4</a></li>
-          <li><a href="sequence5.html">5</a></li>
-          <li><a href="sequence6.html">6</a></li>
-          <li><a href="sequence5.html">&raquo;</a></li>
+          <li><a href="sequence4.html">&raquo;</a></li>
         </ul>        
       </div>
 

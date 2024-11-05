@@ -50,16 +50,16 @@
       <div class="row">
 
         <div class="col-lg-12">
-          <h1 class="page-header">Causal Event Sequence #2 <small>demo</small></h1>
+          <h1 class="page-header">Video Demo #2 <small>an instance of causal sequence #3</small></h1>
         </div>
 
       </div>
 
       <div class="row">
-        <div class="col-md-6 portfolio-item">
+        <div class="col-md-8 portfolio-item">
           <h3>Accident Recording</h3>
-          <video id="seq1" width="560" height="267" controls muted>
-            <source src="video/TODO" type="video/mp4">
+          <video id="seq1" width="747" height="356" controls muted>
+            <source src="video/video3.webm" type="video/webm">
           </video>
           <script>
             var vid1r = document.getElementById("seq1");
@@ -71,36 +71,33 @@
             } 
           </script> 
           <br>
-          <h3>The activated components</h3>
-          <img src="fig/CausalEventSequence.jpg" class="img-thumbnail" />
+          <h3>The activated components throughout the test case</h3>
+          <img src="fig/P2.jpg" class="img-thumbnail" />
         </div>
 
-        <div class="col-md-6 portfolio-item">
-          <h3>Causality Analysis Result</h3>
+        <div class="col-md-4 portfolio-item">
+          <h3>Analysis Result</h3>
           <table class="table table-hover">
             <thead>
-              <tr><th>Time</th><th>Accident Causal Events</th><th>Details</th></tr>
+              <tr><th>Time</th><th>Details</th></tr>
             </thead>
             <tbody>
               <tr><td><a href="#" onclick="setCurTime1_1(0)">0s</a></td>
-                <td><b>No Planning Faults Discovered:</b><br>EV keeps safe distance from NPCs</td>
-                <td>--</td>
+                <td>The AV is driving in an intersection area, with the possibility of nearby NPCs entering the same lane. </td>
               </tr>
-              <tr><td><a href="#" onclick="setCurTime1_1(2.6)">2.6s</a></td>
-                <td><b>In Planning Module:</b><br>EV reuses the previous planning, which sometimes could be improper </td>
-                <td>AV's planning speed is too fast or too slow</td>
+              <tr><td><a href="#" onclick="setCurTime1_1(1)">1s</a></td>
+                <td>The AV's prediction of <b>the NPC's future trajectory is slightly incorrect</b> but makes <b>a proper yielding decision</b>, successfully slowing down.</td>
               </tr>
-              <tr><td><a href="#" onclick="setCurTime1_1(2.9)">2.9s</a></td>
-                <td><b>No Planning Faults Discovered:</b><br>Collision-free long-term speed planning <br><b>In Control Module:</b><br>EV is skidding sometimes </td>
-                <td>AV's Planning speed is too fast or too slow<br><b>For NPC 3: </b><br>Wrong trajectory prediction <br>Improper "follow" decision (too close)</td>
+              <tr><td><a href="#" onclick="setCurTime1_1(3)">3s</a></td>
+                <td>However, after stopping, the AV suddenly decides to <b>overtake the NPC improperly</b>, 
+                  leading it to accelerate again, even though there is only a 10-meter distance between the AV and the NPC.</td>
               </tr>
-              <tr><td><a href="#" onclick="setCurTime1_1(5.7)">5.7s</a></td>
-                <td><b>In Planning Module:</b><br>Wrong motion planning, although identifying drivable area correctly <br><b>In Control Module:</b><br>EV is skidding sometimes </td>
-                <td>AV's Planning speed is too fast or too slow<br><b>For NPC 3: </b><br>Wrong priority/trajectory prediction</td>
+              <tr><td><a href="#" onclick="setCurTime1_1(6)">6s</a></td>
+                <td>Although the AV completes the overtaking maneuver, the distance to the NPC is now less than 5 meters. 
+                  The AV did not provide sufficient space to allow for an emergency deceleration to avoid the NPC.</td>
               </tr>
-              <tr><td><a href="#" onclick="setCurTime1_1(6.2)">6.2s</a></td>
+              <tr><td><a href="#" onclick="setCurTime1_1(10)">10s</a></td>
                 <td><b>Accident!</b></td>
-                <td></td>
               </tr>
             </tbody>
           </table>
@@ -119,8 +116,6 @@
           <li class="active"><a href="sequence2.html">2</a></li>
           <li><a href="sequence3.html">3</a></li>
           <li><a href="sequence4.html">4</a></li>
-          <li><a href="sequence5.html">5</a></li>
-          <li><a href="sequence6.html">6</a></li>
           <li><a href="sequence3.html">&raquo;</a></li>
         </ul>        
       </div>
