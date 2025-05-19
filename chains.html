@@ -55,34 +55,99 @@
           <h2>
             7 issues detected by CausAVFuzzer in Apollo 7
           </h2>
-          <h3> Issue#1:  </h3>
-          lorem ipsum
-          <br><img src="fig/issue1.jpg" class="img-thumbnail" />
-          <br><br>
-          <h3> Issue#2:  </h3>
-          lorem ipsum
-          <br><img src="fig/issue2.jpg" class="img-thumbnail" />
-          <br><br>
-          <h3> Issue#3:  </h3>
-          lorem ipsum
-          <br><img src="fig/issue3.jpg" class="img-thumbnail" />
-          <br><br>
-          <h3> Issue#4:  </h3>
-          lorem ipsum
-          <br><img src="fig/issue4.jpg" class="img-thumbnail" />
-          <br><br>
-          <h3> Issue#5:  </h3>
-          lorem ipsum
-          <br><img src="fig/issue5.jpg" class="img-thumbnail" />
-          <br><br>
-          <h3> Issue#6:  </h3>
-          lorem ipsum
-          <br><img src="fig/issue6.jpg" class="img-thumbnail" />
-          <br><br>
-          <h3> Issue#7:  </h3>
-          lorem ipsum
-          <br><img src="fig/issue7.jpg" class="img-thumbnail" />
-          <br><br>
+          <h3> Issue#1: Improper Priority Prediction </h3>
+          <blockquote>
+            <p>
+              In Causal Event #3, the AV occasionally misclassified the priorities of certain critical NPCs as "No Interaction," 
+              resulting in the assignment of inappropriate trajectory prediction models. 
+              These models failed to account for interactions between NPCs, leading to inaccurate trajectory predictions. 
+              This issue was later addressed in Apollo 9 by introducing a new model designed for multi-agent motion forecasting, 
+              the assignment of which is not determined by the "No Interaction" tag. 
+              <br><b>NOTE.</b> The updates to the relevant main code are concentrated in the file modules/prediction/evaluator/evaluator_manager.cc. 
+              <a href="https://github.com/ApolloAuto/apollo/commit/8ee66855b2c4d4877afde01c2df3b5ff3c568f76#diff-17d4b993f459866495351101cdd7b0dd047717f5463cc89ef93f1e6c4b3b8a69">View Corresponding git commit 8ee6685.</a>
+            </p>
+            <img src="fig/issue1.jpg" class="img-thumbnail" />
+          </blockquote>
+          
+          <h3> Issue#2: Model Accuracy  </h3>
+          <blockquote>
+            <p>
+              Some accidents stem from inaccurate predictions of NPC trajectories, introduced by various deep learning models and propagated downstream. 
+              We observed that Apollo 7’s prediction module fails to account for NPC-to-NPC interactions, leading to misinterpretation of future behaviors. 
+              This issue was later acknowledged by Apollo developers, who in Apollo 9.0 replaced eight existing models with a new model, MULTI_AGENT_EVALUATOR, 
+              which explicitly models inter-NPC interactions. 
+            <br><b>NOTE.</b> The updates to the relevant main code are concentrated in the file modules/evaluator/vehicle/multi_agent_evaluator.cc. 
+            <a href="https://github.com/ApolloAuto/apollo/commit/8ee66855b2c4d4877afde01c2df3b5ff3c568f76#diff-ec7e37ceb0a02c6e613ab9b9416491a642d7019e3b1d6f5a560d7c290319aaf1">View Corresponding git commit 8ee6685.</a>
+            </p>
+            <img src="fig/issue2.jpg" class="img-thumbnail" />
+          </blockquote>
+          
+          <h3> Issue#3: Unsafe Overtake Decisions </h3>
+          <blockquote>
+            <p>
+              Certain Causal Event #5 accidents are linked to unsafe decisions during overtaking maneuvers. 
+              In overtaking scenarios, the planner neglected to verify whether sufficient time and distance existed to pass an NPC, 
+              resulting in side collisions. 
+              To address this, Apollo 9.0-beta added configuration parameters such as time buffers and explicit safety checks. 
+              <br><b>NOTE.</b> The updates to the relevant main code are concentrated in the file modules/planning/tasks/speed_decider/speed_decider.cc. 
+              <a href="https://github.com/ApolloAuto/apollo/commit/ffa0765b2b7f6b831d4c2ede6834d6d5ba2f77f6#diff-3d7dbb50bcd31ecab2738e53c01a0c93dd25eb680041ffaa6da2ebb81bf9cd3e">View Corresponding git commit ffa0765.</a>
+            </p>
+            <img src="fig/issue3.jpg" class="img-thumbnail" />
+          </blockquote>
+          
+          <h3> Issue#4: Unsafe Follow Decisions </h3>
+          <blockquote>
+            <p>
+              Certain Causal Event #5 accidents are linked to unsafe decisions during following maneuvers. 
+              In the following scenarios, it failed to ensure a safe distance from the leading vehicle, causing rear-end crashes. 
+              To address these, Apollo 9.0-beta added configuration parameters such as distance buffers and explicit safety checks. 
+              Further refinements were made in Apollo 9.0-rc, including updates to margin-keeping methods and parameter tuning. 
+              <br><b>NOTE.</b> The updates to the relevant main code are concentrated in the file modules/planning/tasks/speed_decider/speed_decider.cc. 
+              <a href="https://github.com/ApolloAuto/apollo/commit/8ee66855b2c4d4877afde01c2df3b5ff3c568f76#diff-3d7dbb50bcd31ecab2738e53c01a0c93dd25eb680041ffaa6da2ebb81bf9cd3e">View Corresponding git commit 8ee6685.</a>
+            </p>
+            <img src="fig/issue4.jpg" class="img-thumbnail" />
+          </blockquote>
+          
+          <h3> Issue#5: Risky Speed Planning Leading to Fender Benders </h3>
+          <blockquote>
+            <p>
+              In Causal Event #6, the AV sometimes experienced fender benders despite making reasonable high-level decisions. 
+              The cause lay in the speed planning functional block, which failed to maintain an adequate buffer between the AV and surrounding NPCs. 
+              This was later addressed in Apollo 9 by setting explicit margin values to prevent minor collisions. 
+              <br><b>NOTE.</b> The updates to the relevant main code are concentrated in the file modules/planning/tasks/speed_bounds_decider/st_boundary_mapper.cc. 
+              <a href="https://github.com/ApolloAuto/apollo/commit/33bc20e2721a82d88ba226032971feec271994fa#diff-95dd862381db8b1a00da8f18cad18888003a5da1b04511b94eb12d011d3b1e8b">View Corresponding git commit 33bc20e.</a>
+            </p>
+            <img src="fig/issue5.jpg" class="img-thumbnail" />
+          </blockquote>
+          
+          <h3> Issue#6: Risky Speed Planning Leading to Speeding  </h3>
+          <blockquote>
+            <p>
+              The planning module occasionally generated speeds that were too high. 
+              This issue stemmed from the speed planning functional block, which applied an incorrect maximum speed constraint during computation. 
+              The problem was resolved in Apollo 9.0-alpha2 and 9.0-beta by explicitly setting a proper maximum speed value.
+            <br><b>NOTE 1.</b> The updates to the relevant main code are concentrated in the file modules/planning/tasks/optimizers/piecewise_jerk_speed/piecewise_jerk_speed_nonlinear_optimizer.cc. 
+            <a href="https://github.com/ApolloAuto/apollo/commit/263d5b7e059f897e50e2001e0498bd35795dceeb#diff-82b28a23f7f848c74dba50abffa889318d78c89d41731544f3d0f71db1e50227">View Corresponding git commit 263d5b7.</a>
+            <br><b>NOTE 2.</b> The updates to the relevant main code are concentrated in the file modules/planning/tasks/piecewise_jerk_speed/piecewise_jerk_speed_optimizer.cc. 
+            <a href="https://github.com/ApolloAuto/apollo/commit/33bc20e2721a82d88ba226032971feec271994fa#diff-f4b627d67abef168c3a7b98df64e89eb152ef21f8fd572efaf033f948943c6ff">View Corresponding git commit 33bc20e.</a>
+            </p>
+            <img src="fig/issue6.jpg" class="img-thumbnail" />
+          </blockquote>
+          
+          <h3> Issue#7: Risky Speed Planning Leading to unsafe accelerations </h3>
+          <blockquote>
+            <p>
+              The planning module occasionally generated excessively high acceleration values. 
+              This issue originated from the speed planning functional block, which used incorrect maximum acceleration and jerk constraints during computation. 
+              It was resolved in Apollo 8 and 9.0-beta by explicitly setting appropriate maximum acceleration and jerk values.
+            <br><b>NOTE 1.</b> The updates to the relevant main code are concentrated in the file modules/planning/tasks/optimizers/piecewise_jerk_speed/piecewise_jerk_speed_nonlinear_optimizer.cc. 
+            <a href="https://github.com/ApolloAuto/apollo/commit/263d5b7e059f897e50e2001e0498bd35795dceeb#diff-82b28a23f7f848c74dba50abffa889318d78c89d41731544f3d0f71db1e50227">View Corresponding git commit 263d5b7.</a>
+            <br><b>NOTE 2.</b> The updates to the relevant main code are concentrated in the file modules/planning/tasks/piecewise_jerk_speed/piecewise_jerk_speed_optimizer.cc. 
+            <a href="https://github.com/ApolloAuto/apollo/commit/ffa0765b2b7f6b831d4c2ede6834d6d5ba2f77f6#diff-f4b627d67abef168c3a7b98df64e89eb152ef21f8fd572efaf033f948943c6ff">View Corresponding git commit ffa0765.</a>
+            </p>
+            <img src="fig/issue7.jpg" class="img-thumbnail" />
+          </blockquote>
+          
         </div>
       </div>
     </div>
